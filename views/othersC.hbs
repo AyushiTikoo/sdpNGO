@@ -1,0 +1,174 @@
+<head>
+  <title>PickUp Request</title>
+  <style>
+      .form-group{
+          position:relative;
+      }
+      .form-control{
+          height:40px;
+      }
+      .form-control:focus{
+          box-shadow:none;
+      }
+      label{
+          position:absolute;
+          left:10px;
+          top:8px;
+          transition: 0.3s;
+          color:darkblue;
+          font-weight: normal;
+      }
+      .form-control:focus~ label{
+          left:5px; top:-13px;
+        background: #fff;
+        padding:0.5px;  
+      }
+      label.active{left:5px; top:-10px; background:#fff; padding:0 5px;}
+      .chip {
+            display: inline-block;
+            padding: 0 25px;
+            height: 100px;
+            font-size: 40px;
+            line-height: 90px;
+            border-radius: 25px;
+        
+        }
+    .chip img {
+        float: left;
+        margin: 0 10px 0 -25px;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    ::-webkit-scrollbar{
+      width:16px;
+  }
+  ::-webkit-scrollbar-thumb{
+      background: linear-gradient(#000,#74777c);
+      border-radius: 10px;
+  }
+  ::-webkit-scrollbar-track{
+      border-radius: 10px;
+      background: #f5f5f5;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  }    
+  .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+      $(document).ready(function(){
+      $(".form-group .form-control").blur(function(){
+        if($(this).val()!=""){
+            $(this).siblings("label").addClass("active");
+        }
+        else{
+              $(this).siblings("label").removeClass("active");
+        }
+    }); 
+  });
+  </script>
+</head>
+<br>
+<h2 style="margin-left: 400px;font-family:cursive;" data-aos="fade-right">Your Donation Will Help Out The Needy</h2>
+<a href="dashboard" class="btn btn-dark" style="margin-left:50px;background-color:black;width:100px;font-family:cursive;">Go Back</a>
+<br>
+<div class="container" style="margin-top: 50px; font-family: cursive;  ">
+    
+    <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="border: 7px solid black;margin-right: 30px;">
+                
+                <form method="post" action="/othersC/submit">
+                    <!-- SENDER -->
+                <div class="chip" style="margin-top: 30px;color:darkblue;">
+                    <img src="Images/avatar.jpg" alt="Person" width="96" height="96">
+                    Donor's Information
+                </div>
+                <div class="form-group" style=" margin-top: 30px; margin-left:40px;">
+                    <input type="email" style="border: 2px solid darkblue;" class="form-control" id="email" autofocus required name="email" autocomplete="off">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="form-group" style="margin-left:40px;">
+                    <input type="text" style="border: 2px solid darkblue;" class="form-control" id="sName" required name="sName" autocomplete="off">
+                    <label for="sName">Name:</label>
+                </div>
+                <div class="form-group" style=" margin-left:40px;">
+                    <input type="text" style="border: 2px solid darkblue;" class="form-control" id="sMobile" required pattern="[0-9]{10}" maxlength="10" name="sMobile" autocomplete="off">
+                    <label for="sMobile">Mobile-No:</label>
+                </div>
+                <div class="form-group" style=" margin-left:40px;">
+                    <input type="text" style="border: 2px solid darkblue;" class="form-control" id="sAddress" required  name="sAddress" autocomplete="off">
+                    <label for="sAddress">Address:</label>
+                </div>
+                <div class="form-group" style=" margin-left:40px;">
+                    <input type="text" style="border: 2px solid darkblue;" class="form-control" id="sCity" required  name="sCity" autocomplete="off">
+                    <label for="sCity">City:</label>
+                </div>
+                <div class="form-group" style=" margin-left:40px;">
+                    <input type="text" style="border: 2px solid darkblue;" class="form-control" id="sState" required name="sState" autocomplete="off">
+                    <label for="sState">State:</label>
+                </div>
+                <div class="form-group" style=" margin-left:40px;">
+                    <input type="date" style="border: 2px solid darkblue;" class="form-control" id="sDate" required  
+                    min="2019-01-01" title="Enter Date before 2019/01/01" name="sDate" autocomplete="off">
+                </div>
+                
+                <div class="form-group" style=" margin-left:40px;">
+                    <select class="form-control" style="border: 2px solid darkblue;" id="donationtype" name="donationtype" required>
+                        <option selected disabled hidden>What You Want To Donate</option>
+                        <option >Food</option>
+                        <option>Cloths</option>
+						<option >Books</option>
+                    </select>
+                </div>
+                <button type="submit" style=" margin-left:110px;  margin-top: 30px; width: 500px; margin-bottom: 30px;"
+                class="btn btn-dark">Place Donation Request</button>
+                </form>
+            </div>
+            <div class="col-sm-2"></div>
+    </div> 
+</div>
+

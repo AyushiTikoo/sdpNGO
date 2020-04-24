@@ -1,0 +1,231 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+  font-family: cursive;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container-fluid {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container-fluid {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+</style>
+<br>
+<h2 style="margin-left: 400px;" data-aos="fade-right">Your Donation Will Help Out The Needy</h2>
+<a href="dashboard" class="btn btn-dark" style="margin-left:50px;background-color:black;width:100px;">Go Back</a>
+<br>
+<div class="row" >
+  <div class="col-75">
+    <div class="container-fluid">
+      <form action="/donarC/submit" method="post">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Doner Details</h3>
+            <label for="cName"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="cName" name="cName" required>
+            
+            <label for="cEmail"><i class="fa fa-envelope"></i>Email</label>
+            <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="cEmail" name="cEmail" required>
+
+            <label for="cMobile"><i class="fa fa-phone"></i>Contact-Number</label></label>
+            <input type="text" id="cMobile" name="cMobile" maxlength="10" required pattern="[0-9]{10}">
+                     
+            
+            <label for="cAddress"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="cAddress" name="cAddress" required>
+
+            <label for="cCity"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="cCity" name="cCity" required>
+
+            <div class="row">
+              <div class="col-50">
+                <label for="cState">State</label>
+                <input type="text" id="cState" name="cState">
+              </div>
+              <div class="col-50">
+                <label for="cZip">Zip</label>
+                <input type="text" id="cZip" name="cZip" maxlength="6" required pattern="[0-9]{6}">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+             
+            <label for="donationType">Field For Donation</label>
+              <select id="donationType" name="donationType" style="width: 100%;
+              margin-bottom: 20px;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 3px;" required>
+                  <option selected disabled hidden>Select Field For Donation</option>
+                  <option>Education</option>
+                  <option>Health</option>
+                  <option >Livelihood</option>
+                  <option>Environment</option>
+              </select>
+            </br>
+            <label for="CardName">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+
+            <label for="cardName">Name on Card</label>
+            <input type="text" id="cardName" name="cardName" required>
+
+            <label for="cardNumber">Credit card number</label>
+            <input type="text" id="cardNumber" name="cardNumber" maxlength="12" required pattern="[0-9]{12}">
+
+            <label for="cAmount">Amount(Upto 7 Digits)</label>
+            <input type="number" id="cAmount" name="cAmount" maxlength="10"  min="100" max="1000000"style="width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;" required >
+        
+            <label for="expMonth">Exp Month</label>
+            <select id="expMonth" name="expMonth" required style="width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;">
+              <option selected disabled hidden>Select Month</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+          </select>
+            <div class="row">
+              <div class="col-50">
+                <label for="expYear" >Exp Year</label>
+                <input type="number" id="expYear" name="expYear" min="2020" max="2035" placeholder="2018" style="width: 100%;
+                margin-bottom: 20px;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 3px;" required>
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352" maxlength="3" pattern="[0-9]{3}" required>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+       
+        <button type="submit" value="Continue to donate" class="btn btn-success">Donate</button>
+      </form>
+    </div>
+  </div>
+ 
+  </div>
+</div>
